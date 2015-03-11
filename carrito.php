@@ -157,11 +157,16 @@
 
 	?>
 	</container>
-	<div class="text-center fixed-bottom">
-		<h2 id="total" >Total: $ <?php echo $total ?></h2>'
+	<div class="text-center navbar-fixed-bottom" style="padding-bottom: 80px;">
+		<h2 id="total" >Total: $ <?php echo $total ?></h2>
 
 
-		<div><a class="btn btn-primary btn-lg static-bottom" href="productos.php" role="button">Volver al catálogo</a></div>
+		<div>
+			<a class="btn btn-primary btn-lg " href="#" role="button">Comprar </a>
+			<a class="btn btn-default btn-lg " href="productos.php" role="button">Volver al catálogo</a>
+			<a class="btn btn-danger btn-lg " href="#" role="button"> Cancelar Compra </a>
+
+		</div>
 	</div>
 <script src="http://code.jquery.com/jquery-2.1.3.min.js"></script>
 <script type="text/javascript" src="js/script.js"></script>
