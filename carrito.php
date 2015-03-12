@@ -109,65 +109,67 @@
 
 </head>
 <body style="padding-top: 50px;" >
-	<container style="padding-top: 100px;">
+	<h1 class="text-center"> Productos Seleccionados </h1>
+	<container>
 
-<?php require('templates/menu.php'); ?>
+		<?php require('templates/menu.php'); ?>
 
-	<?php
-		$total=0;
-		if (isset($_SESSION['carrito'])) {
-			$datos=$_SESSION['carrito'];
+			<?php
+				$total=0;
+				if (isset($_SESSION['carrito'])) {
+					$datos=$_SESSION['carrito'];
+					
+
+					for ($i=0; $i<count($datos) ; $i++) { 
+			?>
+				<div class="column text-center"  >
+				  	<div class="col-sm-6 col-md-3">
+				    	<div class="thumbnail producto">
+				      		<img src="<?php echo $datos[$i]['Imagen']; ?>" style="height:172px; width: 190px;" alt="172x150">
+				      		<div class="caption">
+				        		<h3><?php echo $datos[$i]['Nombre'];?> </h3>
+				        		<p><?php echo $datos[$i]['Descripcion'];   ?><br>
+				        		Precio unitario: $<?php echo $datos[$i]['Precio'] ?></p>
+				        		<span>Cantidad: 
+				        			<input type="text" class="form-control cantidad" value="<?php echo $datos[$i]['Cantidad']; ?>"
+				        			data-precio="<?php echo $datos[$i]['Precio']; ?>"
+				        			data-id="<?php echo $datos[$i]['Id']; ?>">
+
+				        		</span>
+				        		<strong class="subtotal">Subtotal: <?php echo $datos[$i]['Precio']*$datos[$i]['Cantidad']; ?></strong>
+
+				          	
+				      		</div>
+				    	</div>
+				  	</div>
+				</div>
+
+
+			<?php
+				$total=($datos[$i]['Precio']*$datos[$i]['Cantidad'])+$total;
+					}
+					
+				}else{
+					echo '<div class="alert alert-warning text-center" role="alert" style="margin: 0 auto; margin-left: 300px; margin-right:300px;">Carrito de compras vacio</div>';
+				}
+
+				
+
+
+			?>
 			
-
-			for ($i=0; $i<count($datos) ; $i++) { 
-	?>
-		<div class="column text-center"  >
-		  	<div class="col-sm-6 col-md-3">
-		    	<div class="thumbnail producto">
-		      		<img src="<?php echo $datos[$i]['Imagen']; ?>" style="height:172px; width: 190px;" alt="172x150">
-		      		<div class="caption">
-		        		<h3><?php echo $datos[$i]['Nombre'];?> </h3>
-		        		<p><?php echo $datos[$i]['Descripcion'];   ?><br>
-		        		Precio unitario: $<?php echo $datos[$i]['Precio'] ?></p>
-		        		<span>Cantidad: 
-		        			<input type="text" class="form-control cantidad" value="<?php echo $datos[$i]['Cantidad']; ?>"
-		        			data-precio="<?php echo $datos[$i]['Precio']; ?>"
-		        			data-id="<?php echo $datos[$i]['Id']; ?>">
-
-		        		</span>
-		        		<strong class="subtotal">Subtotal: <?php echo $datos[$i]['Precio']*$datos[$i]['Cantidad']; ?></strong>
-
-		          	
-		      		</div>
-		    	</div>
-		  	</div>
-		</div>
+			<div class="text-center navbar-fixed-bottom" style="padding-bottom: 20px;">
+				<h2 id="total" >Total: $ <?php echo $total ?></h2>
 
 
-	<?php
-		$total=($datos[$i]['Precio']*$datos[$i]['Cantidad'])+$total;
-			}
-			
-		}else{
-			echo '<div class="alert alert-warning text-center" role="alert" style="margin: 0 auto; margin-left: 300px; margin-right:300px;">Carrito de compras vacio</div>';
-		}
+				<div>
+					<a class="btn btn-primary btn-lg " href="#" role="button">Comprar </a>
+					<a class="btn btn-default btn-lg " href="productos.php" role="button">Volver al catálogo</a>
+					<a class="btn btn-danger btn-lg " href="#" role="button"> Cancelar Compra </a>
 
-		
-
-
-	?>
+				</div>
+			</div>
 	</container>
-	<div class="text-center navbar-fixed-bottom" style="padding-bottom: 80px;">
-		<h2 id="total" >Total: $ <?php echo $total ?></h2>
-
-
-		<div>
-			<a class="btn btn-primary btn-lg " href="#" role="button">Comprar </a>
-			<a class="btn btn-default btn-lg " href="productos.php" role="button">Volver al catálogo</a>
-			<a class="btn btn-danger btn-lg " href="#" role="button"> Cancelar Compra </a>
-
-		</div>
-	</div>
 <script src="http://code.jquery.com/jquery-2.1.3.min.js"></script>
 <script type="text/javascript" src="js/script.js"></script>
 <?php require('templates/footer.php'); ?>

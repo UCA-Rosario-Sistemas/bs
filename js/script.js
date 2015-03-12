@@ -11,9 +11,9 @@ var inicio=function	() {
 				$(this).parentsUntil('.producto').find('.subtotal').text('Subtotal: '+ (precio*cantidad));
 				//Usando ajax post = (ruta,{parametros},resultado)
 				$.post('js/modificarDatos.php'),{
-					Id:id,
-					Precio:precio,
-					Cantidad:cantidad
+					Id: id,
+					Precio: precio,
+					Cantidad: cantidad,
 
 				}, function (e) {
 					$("#total").text('Total: '+e);

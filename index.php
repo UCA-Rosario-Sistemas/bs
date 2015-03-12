@@ -17,8 +17,7 @@
     <ol class="carousel-indicators">
         <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
         <li data-target="#myCarousel" data-slide-to="1"></li>
-        <li data-target="#myCarousel" data-slide-to="2"></li>
-        <li data-target="#myCarousel" data-slide-to="3"></li>
+        
     </ol>
 
     <!-- Wrapper for slides -->
@@ -59,6 +58,11 @@
         <span class="sr-only">Next</span>
     </a>
   </div> <!-- Fin SLIDE -->
+
+
+
+    <script src="http://code.jquery.com/jquery-2.1.3.min.js"></script>
+    <script type="text/javascript" src="js/script.js"></script>
 
 
 

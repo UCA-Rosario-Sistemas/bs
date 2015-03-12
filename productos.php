@@ -24,7 +24,7 @@
 
 ?>
 
-<div class="column" >
+<div class="column"  >
   	<div class="col-sm-6 col-md-3">
     	<div class="thumbnail">
       		<img src="<?php echo $f['imagen']; ?>" style="height:172px; width: 190px;" alt="172x150">
@@ -46,12 +46,11 @@
 
 
 
-
+<script src="http://code.jquery.com/jquery-2.1.3.min.js"></script>
+<script type="text/javascript" src="js/script.js"></script>
 
 <?php require('templates/footer.php'); ?>
-  <script type="text/javascript" src="js/script.js"></script>
+
 
         	
-</body>
-</html>
 
