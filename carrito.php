@@ -150,7 +150,7 @@
 					}
 					
 				}else{
-					echo '<div class="alert alert-warning text-center" role="alert" style="margin: 0 auto; margin-left: 300px; margin-right:300px;">Carrito de compras vacio</div>';
+					echo '<div class="alert alert-warning text-center" role="alert" style="margin: 0 auto; margin-left: 300px; margin-right:300px;">Todavia no has agregado ningún producto, puedes hacerlo desde el catálogo</div>';
 				}
 
 				
@@ -163,9 +163,14 @@
 
 
 				<div>
-					<a class="btn btn-primary btn-lg " href="#" role="button">Comprar </a>
+					<?php if ($total != 0) {
+						 echo '<a class="btn btn-primary btn-lg " href="#" role="button">Comprar </a>';
+					}?>
+					
 					<a class="btn btn-default btn-lg " href="productos.php" role="button">Volver al catálogo</a>
-					<a class="btn btn-danger btn-lg " href="#" role="button"> Cancelar Compra </a>
+					<?php if ($total != 0) {
+						echo '<a class="btn btn-danger btn-lg " href="#" role="button"> Cancelar Compra </a>';
+					}?>
 
 				</div>
 			</div>
