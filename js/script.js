@@ -1,10 +1,10 @@
 var inicio=function	() {
-	alert('primera alerta');
+	
 	
 	$('.cantidad').keyup(function (e) {
 		if($(this).val()!=''){
 			if(e.keyCode == 13){
-				alert('asdasd');
+				
 				var id=$(this).attr('data-id');
 				var precio=$(this).attr('data-precio');
 				var cantidad=$(this).val();

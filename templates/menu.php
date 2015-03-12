@@ -43,7 +43,7 @@
 			        			<li><a href="cargar.html">Cargar Productos</a></li>
 			        			<li><a href="login.php"> Logearse</a></li>
 			        			<li class="divider"></li>
-			        			<li><a href="#"> Otro link</a></li>
+			        			<li><a href="#"> Compras Realizadas</a></li>
 			        		</ul>
 
 
