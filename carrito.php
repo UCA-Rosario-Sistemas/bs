@@ -123,7 +123,7 @@
 					for ($i=0; $i<count($datos) ; $i++) { 
 			?>
 				<div class="column text-center"  >
-				  	<div class="col-sm-6 col-md-3">
+				  	<div class="col-sm-6 col-md-2">
 				    	<div class="thumbnail producto">
 				      		<img src="<?php echo $datos[$i]['Imagen']; ?>" style="height:172px; width: 190px;" alt="172x150">
 				      		<div class="caption">
@@ -164,7 +164,7 @@
 
 				<div>
 					<?php if ($total != 0) {
-						 echo '<a class="btn btn-primary btn-lg " href="#" role="button">Comprar </a>';
+						 echo '<a class="btn btn-primary btn-lg " href="compras/comprar.php" role="button">Comprar </a>';
 					}?>
 					
 					<a class="btn btn-default btn-lg " href="productos.php" role="button">Volver al catálogo</a>
