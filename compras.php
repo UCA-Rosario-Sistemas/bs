@@ -29,11 +29,18 @@
         	<tbody>
 	          <?php
 
-	          include('conexion.php');
+	          include 'actions/conection.php';
 
 	          $re=mysql_query("SELECT * FROM compras ORDER BY numeroventa DESC ")or die(mysql_error());
-
+	          $sellNumber=0;
+	          $total=0;
 	          while ($f=mysql_fetch_array($re)) {
+	          		if ($sellNumber != $f['numeroventa']) {
+	          			$sellNumber = $f['numeroventa'];
+
+	          			echo '<tr><th> Compra número: '.$f['numeroventa'].' </th></tr>';
+
+	          		}
 
 	          		?>
 
@@ -41,14 +48,22 @@
 	          				<th><?php echo $f['numeroventa']; ?></th>
 	          				<th><?php echo $f['idcliente']; ?></th>
 	          				<th><?php echo $f['nombre']; ?></th>
-	          				<th><?php echo $f['precio']; ?></th>
+	          				<th><?php echo "$ ".$f['precio']; ?></th>
 	          				<th><?php echo $f['cantidad']; ?></th>
-	          				<th><?php echo ($f['precio']*$f['cantidad']); ?></th>
+	          				<th><?php echo "$ ".($f['precio']*$f['cantidad']); ?></th>
 
 	          			</tr>
 
 
 	          		<?php
+
+	          		if ($sellNumber = $f['numeroventa']) {
+	          			$total= ($f['precio']*$f['cantidad']) + $total;
+	          		}else{
+	          			
+	          		}
+
+
 
 
 

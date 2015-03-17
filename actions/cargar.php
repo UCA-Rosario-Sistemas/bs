@@ -10,23 +10,23 @@
 
 	<?php
 
-		include 'conexion.php';
+		include 'actions/conection.php';
 
-		$nombre= isset($_POST['nombre']) ? $_POST['nombre'] : '' ;
-		$descripcion= isset($_POST['descripcion']) ? $_POST['descripcion'] : '';
+		$name= isset($_POST['nombre']) ? $_POST['nombre'] : '' ;
+		$description= isset($_POST['descripcion']) ? $_POST['descripcion'] : '';
 
-		$precio=$_POST['precio'];
+		$price=$_POST['precio'];
 		$stock=$_POST['stock'];
 
-		$fullRuta="C:/xampp/htdocs/bs/img/productos/";
+		$fullRoute="C:/xampp/htdocs/bs/img/productos/";
 
-		$nombreArchivo=$fullRuta.$_FILES['imagen']['name'];
+		$fileName=$fullRoute.$_FILES['imagen']['name'];
 
-		$ruta='img/productos/'.$_FILES['imagen']['name'];
+		$route='img/productos/'.$_FILES['imagen']['name'];
 
-		$query="INSERT INTO productos (nombre,descripcion,imagen,stock,precio) VALUES ('$nombre','$descripcion','$ruta','$stock','$precio')";
+		$query="INSERT INTO productos (nombre,descripcion,imagen,stock,precio) VALUES ('$name','$description','$route','$stock','$price')";
 
-		if (move_uploaded_file($_FILES['imagen']['tmp_name'], $nombreArchivo)){
+		if (move_uploaded_file($_FILES['imagen']['tmp_name'], $fileName)){
 
 		
 
@@ -36,12 +36,12 @@
   					<div class="panel-body">
   						<h3> Datos cargados: </h3>
 			 			<div class="thumbnail text-center" style="max-width:400px;">
-			 				<img src=<?php echo $ruta ?> style="height:170px; width: 200px;" alt="200x170">
+			 				<img src=<?php echo $route ?> style="height:170px; width: 200px;" alt="200x170">
 				    		<div class="caption">
-							<h3><?php echo $nombre; ?> </h3> 
-							<p>	<?php echo $descripcion; ?> <br> <br>
+							<h3><?php echo $name; ?> </h3> 
+							<p>	<?php echo $description; ?> <br> <br>
 								Stock: <?php echo $stock; ?> <br>
-								Precio: $ <?php echo $precio; ?> <br>
+								Precio: $ <?php echo $price; ?> <br>
 							</p>
 							</div>
 

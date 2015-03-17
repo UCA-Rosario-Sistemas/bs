@@ -1,36 +1,38 @@
 <?php
 session_start();
-include ('conexion.php');
+include ('conection.php');
 	
-	$arreglo=$_SESSION['carrito'];
-	$numeroventa=0;
+	$array=$_SESSION['cart'];
+	$sellNumber=0;
 
 	$re=mysql_query("SELECT * FROM compras ORDER BY numeroventa DESC limit 1")or die(mysql_error());
 
 	while ($f=mysql_fetch_array($re)) {
-		$numeroventa=$f['numeroventa'];
+		$sellNumber=$f['numeroventa'];
 	}
-	if ($numeroventa == 0) {
-		$numeroventa=1;
+	if ($sellNumber == 0) {
+		$sellNumber=1;
 	}else{
-		$numeroventa++;
+		$sellNumber++;
 	}
 
-	for ($i=0; $i < count($arreglo) ; $i++) { 
+	for ($i=0; $i < count($array) ; $i++) { 
 		mysql_query("INSERT into compras (numeroventa,nombre,precio,cantidad) VALUES (
-			".$numeroventa.",
-			".$arreglo[$i]['Nombre'].", 
-			".$arreglo[$i]['Precio'].",
-			".$arreglo[$i]['Cantidad']."
+			".$sellNumber.",
+			'".$array[$i]['Nombre']."',
+			'".$array[$i]['Precio']."',
+			'".$array[$i]['Cantidad']."'
 			)")or die(mysql_error());
 	}
 	//001 (reemplazar con numero cliente)
 
-	unset($_SESSION['carrito']);
+	unset($_SESSION['cart']);
+	header('../productos.php');
 
 	echo "<script> alert('Compra realizada con éxito, redirigiendo al catalogo') </script>";
 
-	header('productos.php');
+	
+
 
 
 

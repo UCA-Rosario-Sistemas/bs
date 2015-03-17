@@ -1,22 +1,22 @@
 <?php
 session_start();
 
-			$arreglo=$_SESSION['carrito'];
+			$array=$_SESSION['cart'];
 			$total=0;
-			$numero=0;
+			$number=0;
 
-			for ($i=0; $i < count($arreglo) ; $i++) { 
-				if ($arreglo[$i]['Id']==$_POST['Id']) {
-					$numero=$i;
+			for ($i=0; $i < count($array) ; $i++) { 
+				if ($array[$i]['Id']==$_POST['Id']) {
+					$number=$i;
 				}
 			}
-			$arreglo[$numero]['Cantidad']= $_POST['Cantidad'];
-			for ($i=0; $i < count($arreglo) ; $i++) {
-				$total=$total+($arreglo[$i]['Precio']*$arreglo[$i]['Cantidad']);
+			$array[$number]['Cantidad']= $_POST['Cantidad'];
+			for ($i=0; $i < count($array) ; $i++) {
+				$total=$total+($array[$i]['Precio']*$array[$i]['Cantidad']);
 
 			}
 
-			$_SESSION['carrito']=$arreglo;
+			$_SESSION['cart']=$array;
 			echo $total;
 
 ?>

@@ -14,7 +14,7 @@
 
 <h1 class="text-center"> Productos disponibles </h1>
 
-<?php include 'conexion.php';
+<?php include 'actions/conection.php';
 	$re=mysql_query("select * from productos")or die(mysql_error());
 
 	while($f=mysql_fetch_array($re)){

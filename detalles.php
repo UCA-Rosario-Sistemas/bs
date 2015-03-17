@@ -9,7 +9,7 @@
 <body>
 	<section>
 	<?php
-		include 'conexion.php';
+		include 'actions/conection.php';
 		$re=mysql_query("SELECT * FROM productos where id=".$_GET['id'])or die(mysql_error());
 		while ($f=mysql_fetch_array($re)) {
 			
