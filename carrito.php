@@ -40,7 +40,7 @@
 					$description=$f['descripcion'];
 					$price=$f['precio'];
 					$imagen=$f['imagen'];
-					$cantidad=$f['stock'];
+					$stock=$f['stock'];
 
 				}
 
@@ -49,6 +49,7 @@
 								'Descripcion' => $description,
 								'Imagen' => $imagen,
 								'Precio' => $price,
+								'Stock' => $stock,
 								'Cantidad' => 1	);
 				array_push($array, $newData);
 
@@ -72,7 +73,7 @@
 				$description=$f['descripcion'];
 				$price=$f['precio'];
 				$imagen=$f['imagen'];
-				$cantidad=$f['stock'];
+				$stock=$f['stock'];
 
 			}
 
@@ -81,6 +82,7 @@
 							'Descripcion' => $description,
 							'Imagen' => $imagen,
 							'Precio' => $price,
+							'Stock' => $stock,
 							'Cantidad' => 1	);
 
 			$_SESSION['cart']=$array;
@@ -132,7 +134,9 @@
 				      		<div class="caption">
 				        		<h3><?php echo $data[$i]['Nombre'];?> </h3>
 				        		<p><?php echo $data[$i]['Descripcion'];   ?><br>
-				        		Precio unitario: $<?php echo $data[$i]['Precio'] ?></p>
+				        		Precio unitario: $<?php echo $data[$i]['Precio'] ; ?> <br>
+				        		Stock: <?php echo $data[$i]['Stock'] ;    ?>
+				        		</p>
 				        		<span>Cantidad: 
 				        			<input type="text" class="form-control cantidad" value="<?php echo $data[$i]['Cantidad']; ?>"
 				        			data-precio="<?php echo $data[$i]['Precio']; ?>"
