@@ -15,7 +15,7 @@
 <h1 class="text-center"> Productos disponibles </h1>
 
 <?php include 'actions/conection.php';
-	$re=mysql_query("select * from productos")or die(mysql_error());
+	$re=mysql_query("select * from productos where stock > 0")or die(mysql_error());
 
 	while($f=mysql_fetch_array($re)){
 
@@ -30,10 +30,11 @@
       		<img src="<?php echo $f['imagen']; ?>" style="height:172px; width: 190px;" alt="172x150">
       		<div class="caption">
         		<h3><?php echo $f['nombre'];?> </h3>
-        		<p><?php echo $f['descripcion'];   ?></p>
-          	<p>
-              <a href="detalles.php?id=<?php echo $f['id'] ?>" class="btn btn-primary" role="button">Detalles</a>
-              <a href="carrito.php?id=<?php echo $f['id']; ?>" class="btn btn-default" role="buttton"> Agregar al Carrito  </a>
+        		<p class="text-center"><?php echo $f['descripcion'];   ?><br>
+            <strong>Stock: </strong><?php echo $f['stock']; ?></p>
+          	<p class="text-center">
+              <a href="detalles.php?id=<?php echo $f['id'] ?>" class="btn btn-primary text-center" role="button">Detalles</a>
+              
             </p>
       		</div>
     	</div>
