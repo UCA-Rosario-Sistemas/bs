@@ -129,7 +129,7 @@
 			?>
 				<div class="column text-center"  >
 				  	<div class="col-sm-6 col-md-3">
-				    	<div class="thumbnail producto">
+				    	<div class="thumbnail product">
 				      		<img src="<?php echo $data[$i]['Imagen']; ?>" style="height:172px; width: 190px;" alt="172x150">
 				      		<div class="caption">
 				        		<h3><?php echo $data[$i]['Nombre'];?> </h3>
@@ -139,8 +139,9 @@
 				        		</p>
 				        		<span>Cantidad: 
 				        			<input type="text" class="form-control cantidad" value="<?php echo $data[$i]['Cantidad']; ?>"
-				        			data-precio="<?php echo $data[$i]['Precio']; ?>"
-				        			data-id="<?php echo $data[$i]['Id']; ?>">
+				        			data-price="<?php echo $data[$i]['Precio']; ?>"
+				        			data-id="<?php echo $data[$i]['Id']; ?>"
+				        			data-stock="<?php echo $data[$i]['Stock']; ?>" >
 
 				        		</span>
 				        		<strong class="subtotal">Subtotal: $<?php echo $data[$i]['Precio']*$data[$i]['Cantidad']; ?></strong>

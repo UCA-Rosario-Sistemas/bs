@@ -4,16 +4,21 @@ var inicio=function	() {
 	$('.cantidad').keyup(function (e) {
 		if($(this).val()!=''){
 			if(e.keyCode == 13){
+
+
 				
 				var id=$(this).attr('data-id');
-				var precio=$(this).attr('data-precio');
+				var price=$(this).attr('data-price');
+				var stock=$(this).attr('stock');
 				var cantidad=$(this).val();
+				// si cantidad > stock
+
 				//Encuentro el la clase subtotal, y cambio su texto
-				$(this).parentsUntil('.producto').find('.subtotal').text('Subtotal: '+ (precio*cantidad));
+				$(this).parentsUntil('.product').find('.subtotal').text('Subtotal: '+ (price*cantidad));
 				//Usando ajax post = (ruta,{parametros},resultado)
 				$.post(('js/modificarDatos.php'),{
 					Id: id,
-					Precio: precio,
+					Price: price,
 					Cantidad: cantidad
 
 				}, function (e) {
