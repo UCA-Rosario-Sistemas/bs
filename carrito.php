@@ -3,6 +3,7 @@
 	session_start();
 	include 'actions/conection.php';
 
+
 	if (isset($_SESSION['cart'])) { 
 		//Si Existe carrito, se ve si ya estaba agregado
 		if (isset($_GET['id'])) {
@@ -20,7 +21,7 @@
 					$number=$i;
 				}
 			}
-			
+
 			if ($find == true) {
 				$array[$number]['Cantidad']=$array[$number]['Cantidad']+1;
 				$_SESSION['cart']=$array;
@@ -28,7 +29,7 @@
 				// Si no esta agregado
 				// Se guarda el nuevo producto
 				$name="";
-				$desription="";
+				$description="";
 				$price=0;
 				$imagen="";
 				$stock=0;
@@ -36,7 +37,7 @@
 				$re=mysql_query("select * from productos where id=".$_GET['id']);
 				while ($f=mysql_fetch_array($re)) {
 					$name=$f['nombre'];
-					$desription=$f['descripcion'];
+					$description=$f['descripcion'];
 					$price=$f['precio'];
 					$imagen=$f['imagen'];
 					$cantidad=$f['stock'];
@@ -45,7 +46,7 @@
 
 				$newData=array('Id'=>$_GET['id'],
 								'Nombre' => $name,
-								'Descripcion' => $desription,
+								'Descripcion' => $description,
 								'Imagen' => $imagen,
 								'Precio' => $price,
 								'Cantidad' => 1	);
@@ -60,7 +61,7 @@
 		// Si no existe carrito, se agrega el producto
 		if (isset($_GET['id'])) {
 			$name="";
-			$desription="";
+			$description="";
 			$price=0;
 			$imagen="";
 			$stock=0;
@@ -68,7 +69,7 @@
 			$re=mysql_query("select * from productos where id=".$_GET['id']);
 			while ($f=mysql_fetch_array($re)) {
 				$name=$f['nombre'];
-				$desription=$f['descripcion'];
+				$description=$f['descripcion'];
 				$price=$f['precio'];
 				$imagen=$f['imagen'];
 				$cantidad=$f['stock'];
@@ -77,7 +78,7 @@
 
 			$array[]=array('Id'=>$_GET['id'],
 							'Nombre' => $name,
-							'Descripcion' => $desription,
+							'Descripcion' => $description,
 							'Imagen' => $imagen,
 							'Precio' => $price,
 							'Cantidad' => 1	);
@@ -109,7 +110,9 @@
 
 </head>
 <body style="padding-top: 50px;" >
-	<h1 class="text-center"> Productos Seleccionados </h1>
+	
+	 <h1 class="text-center"> Productos Seleccionados </h1>
+	
 	<container>
 
 		<?php require('templates/menu.php'); ?>
@@ -117,26 +120,26 @@
 			<?php
 				$total=0;
 				if (isset($_SESSION['cart'])) {
-					$datos=$_SESSION['cart'];
+					$data=$_SESSION['cart'];
 					
 
-					for ($i=0; $i<count($datos) ; $i++) { 
+					for ($i=0; $i<count($data) ; $i++) { 
 			?>
 				<div class="column text-center"  >
-				  	<div class="col-sm-6 col-md-2">
+				  	<div class="col-sm-6 col-md-3">
 				    	<div class="thumbnail producto">
-				      		<img src="<?php echo $datos[$i]['Imagen']; ?>" style="height:172px; width: 190px;" alt="172x150">
+				      		<img src="<?php echo $data[$i]['Imagen']; ?>" style="height:172px; width: 190px;" alt="172x150">
 				      		<div class="caption">
-				        		<h3><?php echo $datos[$i]['Nombre'];?> </h3>
-				        		<p><?php echo $datos[$i]['Descripcion'];   ?><br>
-				        		Precio unitario: $<?php echo $datos[$i]['Precio'] ?></p>
+				        		<h3><?php echo $data[$i]['Nombre'];?> </h3>
+				        		<p><?php echo $data[$i]['Descripcion'];   ?><br>
+				        		Precio unitario: $<?php echo $data[$i]['Precio'] ?></p>
 				        		<span>Cantidad: 
-				        			<input type="text" class="form-control cantidad" value="<?php echo $datos[$i]['Cantidad']; ?>"
-				        			data-precio="<?php echo $datos[$i]['Precio']; ?>"
-				        			data-id="<?php echo $datos[$i]['Id']; ?>">
+				        			<input type="text" class="form-control cantidad" value="<?php echo $data[$i]['Cantidad']; ?>"
+				        			data-precio="<?php echo $data[$i]['Precio']; ?>"
+				        			data-id="<?php echo $data[$i]['Id']; ?>">
 
 				        		</span>
-				        		<strong class="subtotal">Subtotal: <?php echo $datos[$i]['Precio']*$datos[$i]['Cantidad']; ?></strong>
+				        		<strong class="subtotal">Subtotal: $<?php echo $data[$i]['Precio']*$data[$i]['Cantidad']; ?></strong>
 
 				          	
 				      		</div>
@@ -146,11 +149,11 @@
 
 
 			<?php
-				$total=($datos[$i]['Precio']*$datos[$i]['Cantidad'])+$total;
+				$total=($data[$i]['Precio']*$data[$i]['Cantidad'])+$total;
 					}
 					
 				}else{
-					echo '<div class="alert alert-warning text-center" role="alert" style="margin: 0 auto; margin-left: 300px; margin-right:300px;">Todavia no has agregado ningún producto, puedes hacerlo desde el catálogo</div>';
+					echo '<div class="alert alert-warning text-center" role="alert" style="margin: 0 auto; margin-left: 300px; margin-right:300px;">Carrito de compras vacio</div>';
 				}
 
 				
@@ -169,9 +172,8 @@
 					
 					<a class="btn btn-default btn-lg " href="productos.php" role="button">Volver al catálogo</a>
 					<?php if ($total != 0) {
-						echo '<a class="btn btn-danger btn-lg " href="#" role="button"> Cancelar Compra </a>';
+						echo '<a class="btn btn-danger btn-lg " href="actions/destroy.php" role="button"> Cancelar Compra </a>';
 					}?>
-
 				</div>
 			</div>
 	</container>
