@@ -44,6 +44,7 @@
 			        			<li><a href="login.php"> Logearse</a></li>
 			        			<li class="divider"></li>
 			        			<li><a href="compras.php"> Compras Realizadas</a></li>
+			        			<li><a href="stock.php"> Actualizar stock</a></li>
 			        		</ul>
 
 
