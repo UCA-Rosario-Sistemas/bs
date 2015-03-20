@@ -12,10 +12,10 @@
 
 		include 'actions/conection.php';
 
-		$name= isset($_POST['nombre']) ? $_POST['nombre'] : '' ;
-		$description= isset($_POST['descripcion']) ? $_POST['descripcion'] : '';
+		$name= isset($_POST['name']) ? $_POST['name'] : '' ;
+		$description= isset($_POST['description']) ? $_POST['description'] : '';
 
-		$price=$_POST['precio'];
+		$price=$_POST['price'];
 		$stock=$_POST['stock'];
 
 		$fullRoute="C:/xampp/htdocs/bs/img/productos/";
