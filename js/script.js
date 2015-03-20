@@ -9,22 +9,32 @@ var inicio=function	() {
 				
 				var id=$(this).attr('data-id');
 				var price=$(this).attr('data-price');
-				var stock=$(this).attr('stock');
+				var stock=$(this).attr('data-stock');
 				var cantidad=$(this).val();
-				// si cantidad > stock
+				// si cantidad < stock cambiamos cantidad, sino alerta
 
-				//Encuentro el la clase subtotal, y cambio su texto
-				$(this).parentsUntil('.product').find('.subtotal').text('Subtotal: '+ (price*cantidad));
-				//Usando ajax post = (ruta,{parametros},resultado)
-				$.post(('js/modificarDatos.php'),{
-					Id: id,
-					Price: price,
-					Cantidad: cantidad
+				if (cantidad > stock) {
 
-				}, function (e) {
-					$("#total").text('Total: '+e);
+					alert('La cantidad que está ingresando, es mayor a nuestro stock')
 
-				});
+					
+
+				}else{
+					
+
+					//Encuentro el la clase subtotal, y cambio su texto
+					$(this).parentsUntil('.product').find('.subtotal').text('Subtotal: '+ (price*cantidad));
+					//Usando ajax post = (ruta,{parametros},resultado)
+					$.post(('js/modificarDatos.php'),{
+						Id: id,
+						Price: price,
+						Cantidad: cantidad
+
+					}, function (e) {
+						$("#total").text('Total: '+e);
+
+					});
+				}
 
 				
 			}
