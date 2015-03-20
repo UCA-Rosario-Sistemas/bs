@@ -10,7 +10,7 @@
 
 	<?php
 
-		include 'actions/conection.php';
+		include 'conection.php';
 
 		$name= isset($_POST['name']) ? $_POST['name'] : '' ;
 		$description= isset($_POST['description']) ? $_POST['description'] : '';
@@ -24,8 +24,10 @@
 
 		$route='img/productos/'.$_FILES['imagen']['name'];
 
-		$query="INSERT INTO productos (nombre,descripcion,imagen,stock,precio) VALUES ('$name','$description','$route','$stock','$price')";
-
+		$query="INSERT INTO productos (nombre,descripcion,imagen,stock,precio) VALUES ('".$name."','".$description."','".$route."','".$stock."','".$price."')";
+		
+		mysql_query($query);
+		$route='../img/productos'.$_FILES['imagen']['name'];
 		if (move_uploaded_file($_FILES['imagen']['tmp_name'], $fileName)){
 
 		
@@ -36,7 +38,7 @@
   					<div class="panel-body">
   						<h3> Datos cargados: </h3>
 			 			<div class="thumbnail text-center" style="max-width:400px;">
-			 				<img src=<?php echo $route ?> style="height:170px; width: 200px;" alt="200x170">
+			 				<img src="<?php echo $route ?>" style="height:170px; width: 200px;" >
 				    		<div class="caption">
 							<h3><?php echo $name; ?> </h3> 
 							<p>	<?php echo $description; ?> <br> <br>
@@ -47,10 +49,10 @@
 
 						</div>
 
-					<div class="text-center"><a class="btn btn-primary btn-lg" href="cargar.html" role="button" >Cargar otro producto</a></div>
+					<div class="text-center"><a class="btn btn-primary btn-lg" href="../cargar.html" role="button" >Cargar otro producto</a></div>
     					
   					</div>
-  					<div class="panel-footer">Panel footer</div>
+  					<div class="panel-footer"></div>
 				</div>
 			 	
 
