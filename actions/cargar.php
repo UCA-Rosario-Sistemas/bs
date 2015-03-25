@@ -49,7 +49,7 @@
 
 						</div>
 
-					<div class="text-center"><a class="btn btn-primary btn-lg" href="../cargar.html" role="button" >Cargar otro producto</a></div>
+					<div class="text-center"><a class="btn btn-primary btn-lg" href="../cargar.php" role="button" >Cargar otro producto</a></div>
     					
   					</div>
   					<div class="panel-footer"></div>

@@ -1,3 +1,8 @@
+<?php
+	include 'actions/conection.php';
+	$query=mysql_query("SELECT category FROM categories");
+
+?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -26,10 +31,25 @@
 				<label class="sr-only" for="inputDescription">
 					Descripcion
 				</label>
-				<textarea class="form-control" name='description' rows="3" placeholder="Descripcion del producto"></textarea>
-
-				
+				<textarea class="form-control" name='description' rows="3" placeholder="Descripcion del producto"></textarea>				
 			</div>
+
+			<!--<div class="form-group">
+				<label class="sr-only" for="inputCategory">
+					Categoria
+				</label>
+
+				<input list="products" name="products" placeholder="Categoria">
+				<datalist id='products'>
+					<?php
+					while ($f=mysql_fetch_array($query)) {
+						echo '<option value="'.$f['category'].'">';
+					}
+
+					?>
+				</datalist>
+
+			</div>-->
 
 			<div class="form-group">
     				<label for="inputImg">Imagen</label>
@@ -46,7 +66,7 @@
 				<div class="input-group">
       				<div class="input-group-addon">$</div>
 					<input id="inputPrice" name='price' class="form-control" type="number" min="1" max="100000" required="" placeholder="Precio del producto"></input>
-					<div class="input-group-addon">.00</div>
+					<!--<div class="input-group-addon">.00</div> -->
 				</div>
 			</div>
 			
@@ -60,7 +80,7 @@
 			</div>
 			
 
-			<button class="btn btn-lg btn-primary btn-block" type="text" >Agregar Producto</button>
+			<button class="btn btn-lg btn-primary btn-block" type="submit" >Agregar Producto</button>
 
 		</form>
 
