@@ -5,60 +5,68 @@
 
 
 	if (isset($_SESSION['cart'])) { 
+
 		//Si Existe carrito, se ve si ya estaba agregado
 		if (isset($_GET['id'])) {
-			//Si no existe el GET, solo muestra
+			// Si no esta agregado
+			// Se guarda el nuevo producto
 			
+			//Chequeo de stock de producto ingresado anomalamente
+			$re=mysql_query("SELECT stock FROM productos WHERE id=".$_GET['id']);
+			
+			if ($iStock=mysql_fetch_array($re) > 0) {		
 		
-			$array=$_SESSION['cart'];
-			$find=false;
-			$number=0;
+				$array=$_SESSION['cart'];
+				$find=false;
+				$number=0;
 
-			for ($i=0; $i < count($array) ; $i++) { 
-				if ($array[$i]['Id']==$_GET['id']) {
-					// Si estaba agregado, incrementa la cantidad
-					$find=true;
-					$number=$i;
-				}
-			}
-
-			if ($find == true) {
-				$array[$number]['Cantidad']=$array[$number]['Cantidad']+1;
-				$_SESSION['cart']=$array;
-			}else{
-				// Si no esta agregado
-				// Se guarda el nuevo producto
-				$name="";
-				$description="";
-				$price=0;
-				$imagen="";
-				$stock=0;
-
-				$re=mysql_query("select * from productos where id=".$_GET['id']);
-				while ($f=mysql_fetch_array($re)) {
-					$name=$f['nombre'];
-					$description=$f['descripcion'];
-					$price=$f['precio'];
-					$imagen=$f['imagen'];
-					$stock=$f['stock'];
-
+				for ($i=0; $i < count($array) ; $i++) { 
+					if ($array[$i]['Id']==$_GET['id']) {
+						// Si estaba agregado, incrementa la cantidad
+						$find=true;
+						$number=$i;
+					}
 				}
 
-				$newData=array('Id'=>$_GET['id'],
-								'Nombre' => $name,
-								'Descripcion' => $description,
-								'Imagen' => $imagen,
-								'Precio' => $price,
-								'Stock' => $stock,
-								'Cantidad' => 1	);
-				array_push($array, $newData);
+				if ($find == true) {
+					$array[$number]['Cantidad']=$array[$number]['Cantidad']+1;
+					$_SESSION['cart']=$array;
+				}else{
+					//Si no existe el GET, solo muestra
+					
+					$name="";
+					$description="";
+					$price=0;
+					$imagen="";
+					$stock=0;
 
-				$_SESSION['cart']=$array;
+					$re=mysql_query("select * from productos where id=".$_GET['id']);
+					while ($f=mysql_fetch_array($re)) {
+						$name=$f['nombre'];
+						$description=$f['descripcion'];
+						$price=$f['precio'];
+						$imagen=$f['imagen'];
+						$stock=$f['stock'];
+
+					}
+
+					$newData=array('Id'=>$_GET['id'],
+									'Nombre' => $name,
+									'Descripcion' => $description,
+									'Imagen' => $imagen,
+									'Precio' => $price,
+									'Stock' => $stock,
+									'Cantidad' => 1	);
+					array_push($array, $newData);
+
+					$_SESSION['cart']=$array;
+				}
 			}
 		}
 
 		
 	}else{
+
 		// Si no existe carrito, se agrega el producto
 		if (isset($_GET['id'])) {
 			$name="";
@@ -115,7 +123,7 @@
 	
 	 <h1 class="text-center"> Productos Seleccionados </h1>
 	
-	<container>
+	<div>
 
 		<?php require('templates/menu.php'); ?>
 
@@ -138,7 +146,7 @@
 				        		Stock: <?php echo $data[$i]['Stock'] ;    ?>
 				        		</p>
 				        		<span>Cantidad: 
-				        			<input type="text" class="form-control cantidad" value="<?php echo $data[$i]['Cantidad']; ?>"
+				        			<input type="number" class="form-control cantidad" min="1" value="<?php echo $data[$i]['Cantidad']; ?>"
 				        			data-price="<?php echo $data[$i]['Precio']; ?>"
 				        			data-id="<?php echo $data[$i]['Id']; ?>"
 				        			data-stock="<?php echo $data[$i]['Stock']; ?>" >
@@ -181,7 +189,7 @@
 					}?>
 				</div>
 			</div>
-	</container>
+	</div>
 <script src="http://code.jquery.com/jquery-2.1.3.min.js"></script>
 <script type="text/javascript" src="js/script.js"></script>
 <?php require('templates/footer.php'); ?>
