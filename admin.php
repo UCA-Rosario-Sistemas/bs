@@ -18,13 +18,13 @@
 				Usuario
 			</label>
 
-			<input id="inputUser" class="form-control" type="text" autofocus="" required="" placeholder="Usuario"></input>
+			<input id="inputUser" class="form-control" type="text" autofocus required placeholder="Usuario"></input>
 
 			<label class="sr-only" for="inputPassword">
 				Password
 			</label>
 
-			<input id="inputPassword" class="form-control" type="password" required="" placeholder="Password"></input>
+			<input id="inputPassword" class="form-control" type="password" required placeholder="Password"></input>
 
 			<div class="checkbox">
 				<label>

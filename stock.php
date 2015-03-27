@@ -39,7 +39,7 @@ include 'actions/conection.php';
 					ID
 				</label>
 
-				<input id="inputId" name='id' class="form-control" type="number" autofocus="" required="" placeholder="ID de producto"></input>
+				<input id="inputId" name='id' class="form-control" type="number" autofocus required placeholder="ID de producto"></input>
 				</div>
 
 				<div class="form-group">
@@ -47,11 +47,11 @@ include 'actions/conection.php';
 					Stock
 				</label>
 
-				<input id="inputStock" name='stock' class="form-control" type="number" required="" placeholder="Stock a agregar"></input>
+				<input id="inputStock" name='stock' class="form-control" type="number" required placeholder="Stock a agregar"></input>
 				</div>
 
-				<button class="btn btn-lg btn-primary btn-block" type="text" >Actualizar Stock</button>
-				<button class="btn btn-lg btn-default btn-block" type="text" onclick="newWindow()" >Lista ID</button>
+				<button class="btn btn-lg btn-primary btn-block" type="submit" >Actualizar Stock</button>
+				<button class="btn btn-lg btn-default btn-block"  onclick="newWindow()" >Lista ID</button>
 				<script>
 					function newWindow() {
 						window.open('actions/id.php');

@@ -22,15 +22,15 @@
 				
 			</label> -->
 
-			<input id="inputUser" name="User" class="form-control" type="email" autofocus="" required="" placeholder="Email adress"></input>
+			<input id="inputUser" name="User" class="form-control" type="email" autofocus required placeholder="Email adress"></input>
 
 			<!--<label class="sr-only" for="inputPassword">
 			Password				
 			</label> -->
 
-			<input id="inputPassword" name="Password" class="form-control" style="margin-top:10px;"  type="password" required="" placeholder="Password"></input>
+			<input id="inputPassword" name="Password" class="form-control" style="margin-top:10px;"  type="password" required placeholder="Password"></input>
 
-			<button class="btn btn-lg btn-primary btn-block" style="margin-top:10px;" type="subtmit"> Sign In</button>
+			<button class="btn btn-lg btn-primary btn-block" style="margin-top:10px;" type="submit"> Sign In</button>
 			
 
 

@@ -25,7 +25,7 @@
 					Nombre
 				</label>
 
-				<input id="inputName" name='name' class="form-control" type="text" autofocus="" required="" placeholder="Nombre del producto"></input>
+				<input id="inputName" name='name' class="form-control" type="text" autofocus required placeholder="Nombre del producto"></input>
 			</div>
 			<div class="form-group">
 				<label class="sr-only" for="inputDescription">
@@ -65,7 +65,7 @@
 
 				<div class="input-group">
       				<div class="input-group-addon">$</div>
-					<input id="inputPrice" name='price' class="form-control" type="number" min="1" max="100000" required="" placeholder="Precio del producto"></input>
+					<input id="inputPrice" name='price' class="form-control" type="number" min="1" max="100000" required placeholder="Precio del producto"></input>
 					<!--<div class="input-group-addon">.00</div> -->
 				</div>
 			</div>
@@ -75,7 +75,7 @@
 					Stock
 				</label>
 				
-					<input id="inputStock" name='stock' class="form-control" type="number" min="1" max="1000" required="" placeholder="Stock del producto"></input>
+					<input id="inputStock" name='stock' class="form-control" type="number" min="1" max="1000" required placeholder="Stock del producto"></input>
 					
 			</div>
 			

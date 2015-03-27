@@ -17,7 +17,7 @@
 
 	?>
 
-			<div class="panel panel-primary" style="margin: 0 auto; max-width:400px;">
+			<div class="panel panel-primary" style="margin: 0 auto; max-width:400px; margin-top: 10px;">
 				<div class="panel-heading text-center"><h3>Producto:</h3></div>
   				<div class="panel-body">
     				<div class="thumbnail text-center" style="max-width:350px;">
@@ -36,7 +36,7 @@
 
 				</div>
   				
-  				<div class="panel-footer">Panel footer</div>
+  				<!--<div class="panel-footer"></div> -->
 			</div> <!-- Fin del Panel -->
 			
 
