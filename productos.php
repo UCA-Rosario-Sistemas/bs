@@ -18,12 +18,13 @@
 
 <h1 class="text-center"> Productos disponibles </h1>
 <form method="GET" action="productos.php">
+
   <div class="row " style="max-width: 600px; margin: 0 auto; padding-bottom: 10px;">
       <div class="">
         <div class="input-group">
           <input name="search" type="text" class="form-control" placeholder="Búsqueda de productos">
           <span class="input-group-btn">
-              <button class="btn btn-default" type="submit">Buscar!</button>
+              <button class="btn btn-default" type="submit"><span class="glyphicon glyphicon-search" ></span> Buscar!</button>
           </span>
         </div><!-- /input-group -->
       </div><!-- /.col-lg-6 -->
